@@ -1,0 +1,120 @@
+name: GrandVide
+version: 1.0.0
+author: Avygeil
+main: com.avygeil.GrandVide.GrandVide
+softdepend: [WorldEdit, LogBlock]
+description: "Un plugin pour le concept de Grand Vide"
+commands:
+  gv:
+    description: "Commandes du plugin GrandVide"
+    usage: "Commande incorrecte: /gv help pour plus d'aide"
+    aliases: [grandvide]
+permissions:
+  gv.*:
+    description: "Toutes les commandes GrandVide"
+    children:
+      gv.player: true
+      gv.animatoo: true
+      gv.config: true
+  gv.player:
+    description: "Toutes les commandes joueur"
+    children:
+      gv.help.player: true
+      gv.join: true
+      gv.leave: true
+      gv.globalchat: true
+      gv.toggle: true
+      gv.stats: true
+      gv.players: true
+      gv.sign.use: true
+  gv.animatoo:
+    description: "Toutes les commandes d'animatoo"
+    children:
+      gv.help.animatoo: true
+      gv.start: true
+      gv.abort: true
+      gv.swap: true
+      gv.begin: true
+      gv.tp: true
+      gv.players: true
+      gv.list: true
+      gv.scripts: true
+  gv.config:
+    description: "Toutes les commandes de configuration"
+    children:
+      gv.help.config: true
+      gv.create: true
+      gv.rename: true
+      gv.setloc: true
+      gv.setspawn: true
+      gv.delspawn: true
+      gv.setpower: true
+      gv.delete: true
+      gv.list: true
+      gv.setscript: true
+      gv.delscript: true
+      gv.scripts: true
+      gv.tp: true
+      gv.sign.create: true
+      gv.dropper: true
+  gv.basic:
+    description: "Acces basique"
+    default: true
+  gv.help.player:
+    description: "Aide des joueurs"
+  gv.help.animatoo:
+    description: "Aide des animatoo"
+  gv.help.config:
+    description: "Aide de la configuration"
+  gv.join:
+    description: "Rejoindre une partie"
+  gv.leave:
+    description: "Quitter une partie"
+  gv.globalchat:
+    description: "Message global sur la partie"
+  gv.toggle:
+    description: "(De)verouiller le chat equipe"
+  gv.stats:
+    description: "Consulter les statistiques"
+  gv.start:
+    description: "Organiser une partie"
+  gv.abort:
+    description: "Abandonner la partie"
+  gv.swap:
+    description: "Changer un joueur d'equipe"
+  gv.begin:
+    description: "Commencer la partie"
+  gv.tp:
+    description: "Se teleporter a une arene"
+  gv.players:
+    description: "Lister les joueurs d'une partie"
+  gv.kick:
+    description: "Exclure un joueur de la partie"
+  gv.create:
+    description: "Creer une arene"
+  gv.rename:
+    description: "Renommer une arene"
+  gv.setloc:
+    description: "Changer d'emplacement une arene"
+  gv.setspawn:
+    description: "Changer le spawn d'une equipe"
+  gv.delspawn:
+    description: "Supprimer le spawn d'une equipe"
+  gv.setpower:
+    description: "Changer le bloc courant"
+  gv.delete:
+    description: "Supprimer une arene"
+  gv.list:
+    description: "Lister les arenes et leurs informations"
+  gv.setscript:
+    description: "Definir un script"
+  gv.delscript:
+    description: "Supprimer un script"
+  gv.scripts:
+    description: "Lister les scripts de droppers"
+  gv.sign.use:
+    description: "Utiliser les panneaux speciaux"
+  gv.sign.create:
+    description: "Creer un panneau special"
+  gv.dropper:
+    description: "Gerer les droppers speciaux"
