@@ -57,8 +57,8 @@ public class GVDatabaseHelper
 			NOCASE = null;
 		}
 		
-		DB_REGIONS_SCHEME = "CREATE TABLE IF NOT EXISTS regions(id INTEGER PRIMARY KEY " + AUTOINCREMENT + ", name TEXT, world TEXT, container BLOB, teams BLOB, power BLOB)";
-		DB_STATS_SCHEME = "CREATE TABLE IF NOT EXISTS stats(id INTEGER PRIMARY KEY " + AUTOINCREMENT + ", player TEXT, kills INTEGER, deaths INTEGER, damage_dealt INTEGER, damage_taken INTEGER, block_break INTEGER, block_place INTEGER, games_joined INTEGER, games_finished INTEGER)";
+		DB_REGIONS_SCHEME = "CREATE TABLE IF NOT EXISTS " + gv.configurationHandler.mysqlPrefix + "regions(id INTEGER PRIMARY KEY " + AUTOINCREMENT + ", name TEXT, world TEXT, container BLOB, teams BLOB, power BLOB)";
+		DB_STATS_SCHEME = "CREATE TABLE IF NOT EXISTS " + gv.configurationHandler.mysqlPrefix + "stats(id INTEGER PRIMARY KEY " + AUTOINCREMENT + ", player TEXT, kills INTEGER, deaths INTEGER, damage_dealt INTEGER, damage_taken INTEGER, block_break INTEGER, block_place INTEGER, games_joined INTEGER, games_finished INTEGER)";
 	}
 	
 	public void setConnection() throws Exception

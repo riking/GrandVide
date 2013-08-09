@@ -44,7 +44,7 @@ public class GVRegionManager
 		
 		try
 		{
-			rs = gv.databaseHelper.query("SELECT * FROM regions ORDER BY id");
+			rs = gv.databaseHelper.query("SELECT * FROM " + gv.configurationHandler.mysqlPrefix + "regions ORDER BY id");
 			
 			while (rs.next())
 			{
@@ -79,7 +79,7 @@ public class GVRegionManager
 			Region reg = new Region(nextID(), name, container, spawn);
 			regions.add(reg);
 			
-			gv.databaseHelper.prepare("INSERT INTO regions(id, name, world, container, teams, power) VALUES(NULL, '" + name + "', '" + world.getName() + "', ?, ?, ?)");
+			gv.databaseHelper.prepare("INSERT INTO " + gv.configurationHandler.mysqlPrefix + "regions(id, name, world, container, teams, power) VALUES(NULL, '" + name + "', '" + world.getName() + "', ?, ?, ?)");
 			gv.databaseHelper.getPrepared().setBytes(1, container.serialize());
 			gv.databaseHelper.getPrepared().setBytes(2, reg.serializeTeamMap());
 			gv.databaseHelper.getPrepared().setBytes(3, reg.serializePowerLocation());
@@ -100,7 +100,7 @@ public class GVRegionManager
 	{
 		try
 		{
-			gv.databaseHelper.execute("UPDATE regions SET name='" + name + "' WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
+			gv.databaseHelper.execute("UPDATE " + gv.configurationHandler.mysqlPrefix + "regions SET name='" + name + "' WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
 			
 			reg.setName(name);
 		}
@@ -130,7 +130,7 @@ public class GVRegionManager
 			
 			reg.setContainer(container);
 			
-			gv.databaseHelper.prepare("UPDATE regions SET world='" + container.getWorld().getName() + "', container=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
+			gv.databaseHelper.prepare("UPDATE " + gv.configurationHandler.mysqlPrefix + "regions SET world='" + container.getWorld().getName() + "', container=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
 			gv.databaseHelper.getPrepared().setBytes(1, container.serialize());
 			gv.databaseHelper.finalize();
 		}
@@ -151,7 +151,7 @@ public class GVRegionManager
 		{
 			reg.setTeamSpawn(team, spawn);
 			
-			gv.databaseHelper.prepare("UPDATE regions SET teams=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
+			gv.databaseHelper.prepare("UPDATE " + gv.configurationHandler.mysqlPrefix + "regions SET teams=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
 			gv.databaseHelper.getPrepared().setBytes(1, reg.serializeTeamMap());
 			gv.databaseHelper.finalize();
 		}
@@ -172,7 +172,7 @@ public class GVRegionManager
 		{
 			reg.deleteTeamSpawn(team);
 			
-			gv.databaseHelper.prepare("UPDATE regions SET teams=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
+			gv.databaseHelper.prepare("UPDATE " + gv.configurationHandler.mysqlPrefix + "regions SET teams=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
 			gv.databaseHelper.getPrepared().setBytes(1, reg.serializeTeamMap());
 			gv.databaseHelper.finalize();
 		}
@@ -193,7 +193,7 @@ public class GVRegionManager
 		{
 			reg.setPowerLocation(loc);
 			
-			gv.databaseHelper.prepare("UPDATE regions SET power=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
+			gv.databaseHelper.prepare("UPDATE " + gv.configurationHandler.mysqlPrefix + "regions SET power=? WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
 			gv.databaseHelper.getPrepared().setBytes(1, reg.serializePowerLocation());
 			gv.databaseHelper.finalize();
 		}
@@ -212,7 +212,7 @@ public class GVRegionManager
 	{		
 		try
 		{
-			gv.databaseHelper.execute("DELETE FROM regions WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
+			gv.databaseHelper.execute("DELETE FROM " + gv.configurationHandler.mysqlPrefix + "regions WHERE name " + GVDatabaseHelper.NOCASE + " = '" + reg.getName() + "'");
 			
 			final int id = reg.getID();
 			regions.remove(reg);

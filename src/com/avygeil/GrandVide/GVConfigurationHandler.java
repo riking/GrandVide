@@ -14,7 +14,7 @@ import com.avygeil.util.StringUtils;
 public class GVConfigurationHandler
 {
 	private final GrandVide gv;
-	private  ConfigurationSection config;
+	private ConfigurationSection config;
 	
 	public String sqlDriver;
 	
@@ -23,6 +23,7 @@ public class GVConfigurationHandler
 	public String mysqlDatabase;
 	public String mysqlUser;
 	public String mysqlPassword;
+	public String mysqlPrefix;
 	
 	public boolean worldEdit;
 	public boolean rollBack;
@@ -52,6 +53,7 @@ public class GVConfigurationHandler
 		defaultValues.put("mysql.database", "grandvide");
 		defaultValues.put("mysql.user", "root");
 		defaultValues.put("mysql.password", "password");
+		defaultValues.put("mysql.prefix", "gv_");
 		
 		defaultValues.put("region.worldEdit", true);
 		defaultValues.put("region.rollBack", true);
@@ -85,6 +87,7 @@ public class GVConfigurationHandler
 		mysqlDatabase = config.getString("mysql.database", "grandvide");
 		mysqlUser = config.getString("mysql.user", "root");
 		mysqlPassword = config.getString("mysql.password", "password");
+		mysqlPrefix = config.getString("mysql.prefix", "gv_");
 		
 		worldEdit = config.getBoolean("region.worldEdit", true);
 		rollBack = config.getBoolean("region.rollBack", true);

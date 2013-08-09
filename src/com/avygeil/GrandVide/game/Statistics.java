@@ -44,7 +44,7 @@ public class Statistics
 	{
 		try
 		{
-			GrandVide.getInstance().databaseHelper.execute("UPDATE stats SET kills=" + stats.getKills() + ", deaths=" + stats.getDeaths() + ", damage_dealt=" + stats.getDamageDealt() + ", damage_taken=" + stats.getDamageTaken() + ", block_break=" + stats.getBlockBreak() + ", block_place=" + stats.getBlockPlace() + ", games_joined=" + stats.getGamesJoined() + ", games_finished=" + stats.getGamesFinished() + " WHERE player " + GVDatabaseHelper.NOCASE + " = '" + playerName + "'");
+			GrandVide.getInstance().databaseHelper.execute("UPDATE " + GrandVide.getInstance().configurationHandler.mysqlPrefix + "stats SET kills=" + stats.getKills() + ", deaths=" + stats.getDeaths() + ", damage_dealt=" + stats.getDamageDealt() + ", damage_taken=" + stats.getDamageTaken() + ", block_break=" + stats.getBlockBreak() + ", block_place=" + stats.getBlockPlace() + ", games_joined=" + stats.getGamesJoined() + ", games_finished=" + stats.getGamesFinished() + " WHERE player " + GVDatabaseHelper.NOCASE + " = '" + playerName + "'");
 		}
 		catch (Exception e)
 		{
@@ -60,7 +60,7 @@ public class Statistics
 		
 		try
 		{
-			rs = GrandVide.getInstance().databaseHelper.query("SELECT * FROM stats WHERE player " + GVDatabaseHelper.NOCASE + " = '" + playerName + "'");
+			rs = GrandVide.getInstance().databaseHelper.query("SELECT * FROM " + GrandVide.getInstance().configurationHandler.mysqlPrefix + "stats WHERE player " + GVDatabaseHelper.NOCASE + " = '" + playerName + "'");
 			
 			if (rs.next())
 			{
@@ -79,7 +79,7 @@ public class Statistics
 			{
 				result = new Statistics();
 				
-				GrandVide.getInstance().databaseHelper.execute("INSERT INTO stats(id, player, kills, deaths, damage_dealt, damage_taken, block_break, block_place, games_joined, games_finished) VALUES(NULL, '" + playerName + "', '0', '0', '0', '0', '0', '0', '0', '0')");
+				GrandVide.getInstance().databaseHelper.execute("INSERT INTO " + GrandVide.getInstance().configurationHandler.mysqlPrefix + "stats(id, player, kills, deaths, damage_dealt, damage_taken, block_break, block_place, games_joined, games_finished) VALUES(NULL, '" + playerName + "', '0', '0', '0', '0', '0', '0', '0', '0')");
 			}
 		}
 		catch (Exception e)
