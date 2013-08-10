@@ -1,5 +1,5 @@
 name: GrandVide
-version: 1.0.1
+version: 1.0.2
 author: Avygeil
 main: com.avygeil.GrandVide.GrandVide
 softdepend: [WorldEdit, LogBlock]

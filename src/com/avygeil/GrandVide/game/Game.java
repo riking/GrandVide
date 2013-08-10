@@ -112,6 +112,9 @@ public class Game
 		players.add(c);
 		Statistics.getStats(player.getName());
 		
+		if (isRunning)
+			c.setScoreboard(scoreboard);
+		
 		return true;
 	}
 	

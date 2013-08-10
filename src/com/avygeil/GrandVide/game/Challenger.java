@@ -10,7 +10,7 @@ import org.bukkit.scoreboard.Scoreboard;
 import com.avygeil.util.BukkitUtils;
 import com.avygeil.util.ImprovedOfflinePlayer;
 
-public class Challenger
+public class Challenger implements Comparable<Challenger>
 {
 	private Player player;
 	private Team team;
@@ -156,5 +156,10 @@ public class Challenger
 		player.setHealth(20.0D);
 		player.getInventory().clear();
 		BukkitUtils.clearPlayerArmor(player);
+	}
+	
+	public final int compareTo(Challenger o)
+	{
+		return team.ordinal() - o.getTeam().ordinal();
 	}
 }

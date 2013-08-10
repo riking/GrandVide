@@ -1,5 +1,8 @@
 package com.avygeil.GrandVide.command;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -34,7 +37,10 @@ public class CommandPlayers extends Command
 		queueMessage(ChatColor.GOLD + "Joueurs actuels :");
 		queueMessage(ChatColor.GRAY + "<Équipe> <Joueur>");
 		
-		for (Challenger c : gv.gameManager.getCurrentGame().getPlayers())
+		ArrayList<Challenger> challengers = gv.gameManager.getCurrentGame().getPlayers();
+		Collections.sort(challengers);
+		
+		for (Challenger c : challengers)
 		{
 			StringBuilder sb = new StringBuilder();
 			
