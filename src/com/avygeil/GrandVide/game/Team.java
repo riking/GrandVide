@@ -44,8 +44,8 @@ public enum Team
 		
 		if (playable)
 		{
-			wool = new ItemStack(Material.WOOL, 1, dyeColor.getWoolData());
-			
+			wool = new Wool(dyeColor).toItemStack(1);
+
 			chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
 			LeatherArmorMeta meta = (LeatherArmorMeta)chestplate.getItemMeta();
 			meta.setColor(color);
